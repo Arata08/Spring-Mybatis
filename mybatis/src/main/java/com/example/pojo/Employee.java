@@ -32,6 +32,12 @@ public class Employee {
         this.empSalary = empSalary;
     }
 
+    public Employee(Integer empId, String empName, Double empSalary) {
+        this.empId = empId;
+        this.empSalary = empSalary;
+        this.empName = empName;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +

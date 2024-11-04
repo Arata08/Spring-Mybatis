@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 //Author:UserName
@@ -60,6 +61,52 @@ public class MybatisTest {
 
     }
 
+    @Test
+    public void test_02(){
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+        // 批量查询
+        List<Integer> ids = new ArrayList<>();
+        ids.add(1);
+        ids.add(2);
+        List<Employee> employees = mapper.queryBatch(ids);
+        System.out.println("Query Batch: " + employees);
+    }
+
+    @Test
+    public void test_03(){
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+
+        // 批量删除
+        List<Integer> ids = new ArrayList<>();
+        ids.add(1);
+        ids.add(2);
+        int deleteCount = mapper.deleteBatch(ids);
+        System.out.println("Delete Count: " + deleteCount);
+    }
+
+    @Test
+    public void test_04() {
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+
+        // 批量插入
+        List<Employee> insertList = new ArrayList<>();
+        insertList.add(new Employee(5, "Alice", 5000.0));
+        insertList.add(new Employee(6, "Bob", 6000.0));
+        int insertCount = mapper.insertBatch(insertList);
+        System.out.println("Insert Count: " + insertCount);
+    }
+
+    @Test
+    public void test_05() {
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+
+        // 批量更新
+        List<Employee> updateList = new ArrayList<>();
+        updateList.add(new Employee(3, "Alice Updated", 5500.0));
+        updateList.add(new Employee(4, "Bob Updated", 6500.0));
+        int updateCount = mapper.updateBatch(updateList);
+        System.out.println("Update Count: " + updateCount);
+    }
 
     @AfterEach //每次走测试方法之后调用的方法!
     public void clean(){
