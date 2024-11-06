@@ -1,6 +1,5 @@
 package com.example.mybatisplus.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -18,7 +17,7 @@ public class User implements Serializable {
     /**
      * 用户id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId()
     private Long id;
 
     /**
